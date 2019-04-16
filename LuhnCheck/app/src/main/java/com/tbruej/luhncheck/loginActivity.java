@@ -27,32 +27,34 @@ public class loginActivity extends AppCompatActivity {
         setContentView(R.layout.login);
 
 
+
+        // call function here
         configuration();
 
-        Emailinput    =   findViewById(R.id.email_id);
-        Passwordinput =   findViewById(R.id.pass_id);
-       /* subButton     =    (Button)   findViewById(R.id.submitBtn);
 
-        subButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                email       =   Emailinput.getText().toString();
-                password    =   Passwordinput.getText().toString();
-                //showToast(email);
-                //showToast(password);
-
-            }
-        });
-*/
 
     }
 
     private void configuration(){
+
+        Emailinput    =   findViewById(R.id.email_id);
+        Passwordinput =   findViewById(R.id.pass_id);
+
         Button loginButton = findViewById(R.id.submitBtn);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(loginActivity.this, MainActivity.class));
+
+                email      = Emailinput.getText().toString();
+                password   = Passwordinput.getText().toString();
+
+
+                if((email.equals("md@gmail.com")) && (password.equals("123"))){
+                    startActivity(new Intent(loginActivity.this, MainActivity.class));
+
+                }else {
+                   showToast("Wrong entry!");
+                }
             }
         });
     }
