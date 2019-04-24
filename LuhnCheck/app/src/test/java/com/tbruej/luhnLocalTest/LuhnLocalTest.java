@@ -11,6 +11,14 @@ public class LuhnLocalTest {
 
 
 
+    @Test
+    public void luhnTestSuccess(){
+        //assertEquals(checkLuhn("18009054331492"), true);
+        assertEquals(checkLuhn("18009054331492"), true);
+    }
+
+
+
     //@Test(expected = AssertionError.class)
     @Test
     public void luhnTest(){
