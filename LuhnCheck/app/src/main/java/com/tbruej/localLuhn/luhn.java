@@ -3,6 +3,8 @@ package com.tbruej.localLuhn;
 public class luhn {
 
     public static boolean checkLuhn(String cardNo){
+
+
         int nDigit = cardNo.length();
         int nSum = 0;
         boolean isSecond = false;
@@ -21,6 +23,7 @@ public class luhn {
         }
 
         return (nSum % 10 == 0);
+
     }
 
 

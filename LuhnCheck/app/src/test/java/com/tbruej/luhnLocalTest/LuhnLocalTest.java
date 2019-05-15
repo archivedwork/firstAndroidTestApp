@@ -9,14 +9,30 @@ import static org.junit.Assert.*;
 
 public class LuhnLocalTest {
 
-
-
     @Test
     public void luhnTestSuccess(){
         //assertEquals(checkLuhn("18009054331492"), true);
         assertEquals(checkLuhn("18009054331492"), true);
     }
 
+
+    @Test
+    public void luhnTestWithManyStrings(){
+       assertEquals(checkLuhn("wefdcéjbwevfcdjhvsuaycvhbasdlnafsliguzsavchjascvjbhxvhv1   3124e23e"), false);
+    }
+
+    @Test(expected = AssertionError.class)
+    //@Test
+    public void luhnTestWithEmptyStrings(){
+        assertEquals(checkLuhn("                    "), false);
+    }
+
+
+
+    @Test
+    public void luhnTestWithManychar(){
+        assertEquals(checkLuhn("_'§@&#><()=/%!+"), false);
+    }
 
 
     //@Test(expected = AssertionError.class)
@@ -32,6 +48,5 @@ public class LuhnLocalTest {
         //assertEquals(checkLuhn("18009054331492"), true);
         assertEquals(checkLuhn("180090543314"), true);
     }
-
 
 }

@@ -8,13 +8,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tbruej.luhncheck.loginActivity;
+
+import static com.tbruej.localLuhn.luhn.checkLuhn;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText CardID;
     String cardNo;
+   // public boolean isEmpty;
+
 
 
 
@@ -26,11 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         logoutConfig();
         checkConfig();
-
-
     }
-
-
 
 
 // configuration
@@ -58,17 +59,35 @@ public class MainActivity extends AppCompatActivity {
                 TextView displayValidityTxt = findViewById(R.id.validityTxt);
 
 
-                if (checkLuhn(cardNo) ) {
-                    System.out.println("VALID!");
-                    displayValidityTxt.setText("Valid!");
+              /*  if (checkLuhn(cardNo)) {
+                    if (isEmpty()){
+                        System.out.println("Empty: did not enter any value! ");
+                        showToast("Wrong entry!");
+
+
+                    } else { */
+                        if (checkLuhn(cardNo)) {
+                            if (isEmpty()) {
+                                System.out.println("Empty: did not enter any value! ");
+                                showToast("Wrong entry!");
+                            } else {
+                                System.out.println("VALID!");
+                                displayValidityTxt.setText("Valid!");
+                            }
+                        } else {
+                            System.out.println("NOT VALID!");
+                            displayValidityTxt.setText("NOT Valid!");
+                        }
+                    //}
+                  //  }
+
                 }
-                else {
-                    System.out.println("NOT VALID!");
-                    displayValidityTxt.setText("NOT Valid!");
-                }
-            }
         });
     }
+
+
+
+
 
 
 
@@ -94,5 +113,16 @@ public class MainActivity extends AppCompatActivity {
 
         return (nSum % 10 == 0);
     }
+
+
+// check for empty
+    public boolean isEmpty(){
+        return cardNo.length() == 0;
+    }
+
+    private void showToast(String text){
+        Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();
+    }
+
 
 }

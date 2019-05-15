@@ -21,6 +21,7 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.pressImeActionButton;
 import static android.support.test.espresso.action.ViewActions.replaceText;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
@@ -35,84 +36,29 @@ public class loginActivityTest2 {
 
     @Test
     public void loginActivityTest2() {
-        ViewInteraction appCompatEditText = onView(
-                allOf(withId(R.id.email_id),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                1),
-                        isDisplayed()));
+        ViewInteraction appCompatEditText = onView(withId(R.id.email_id));
         appCompatEditText.perform(replaceText("md@gmail.com"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.pass_id),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
+        ViewInteraction appCompatEditText2 = onView(withId(R.id.pass_id));
         appCompatEditText2.perform(replaceText("123"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText3 = onView(
-                allOf(withId(R.id.pass_id), withText("123"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
+        ViewInteraction appCompatEditText3 = onView(withId(R.id.pass_id));
+       // appCompatEditText2.check(matches(withText("123")));
         appCompatEditText3.perform(pressImeActionButton());
 
-        ViewInteraction appCompatButton = onView(
-                allOf(withId(R.id.submitBtn), withText("Submit"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                3),
-                        isDisplayed()));
+        ViewInteraction appCompatButton = onView(withId(R.id.submitBtn));
         appCompatButton.perform(click());
 
-        ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.cardNoText),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                3),
-                        isDisplayed()));
+        ViewInteraction appCompatEditText4 = onView(withId(R.id.cardNoText));
         appCompatEditText4.perform(replaceText("18009054331492"), closeSoftKeyboard());
 
-        ViewInteraction appCompatButton2 = onView(
-                allOf(withId(R.id.checkBtn), withText("Check!"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
+        ViewInteraction appCompatButton2 = onView(withId(R.id.checkBtn));
         appCompatButton2.perform(click());
 
-        ViewInteraction appCompatEditText5 = onView(
-                allOf(withId(R.id.cardNoText), withText("18009054331492"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                3),
-                        isDisplayed()));
+        ViewInteraction appCompatEditText5 = onView(withId(R.id.cardNoText));
         appCompatEditText5.perform(pressImeActionButton());
 
-        ViewInteraction appCompatButton3 = onView(
-                allOf(withId(R.id.logoutButton), withText("Logout"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                5),
-                        isDisplayed()));
+        ViewInteraction appCompatButton3 = onView(withId(R.id.logoutButton));
         appCompatButton3.perform(click());
     }
 
